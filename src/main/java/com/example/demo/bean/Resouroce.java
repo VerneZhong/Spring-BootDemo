@@ -4,6 +4,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.util.Date;
+
 @Configuration
 @ConfigurationProperties(prefix = "com.sengled")
 @PropertySource(value = "classpath:config.properties")
@@ -12,6 +14,7 @@ public class Resouroce {
     private String url;
     private String type;
     private String name;
+    private Date date;
 
     public String getUrl() {
         return url;
@@ -35,5 +38,13 @@ public class Resouroce {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
