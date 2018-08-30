@@ -6,6 +6,9 @@ import org.springframework.context.annotation.PropertySource;
 
 import java.util.Date;
 
+/**
+ * 资源文件-转Java bean
+ */
 @Configuration
 @ConfigurationProperties(prefix = "com.sengled")
 @PropertySource(value = "classpath:config.properties")

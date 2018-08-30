@@ -1,5 +1,6 @@
 package com.example.demo.bean;
 
+import com.example.demo.common.JsonUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -75,5 +76,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return JsonUtil.getInstance().toJson(this);
     }
 }

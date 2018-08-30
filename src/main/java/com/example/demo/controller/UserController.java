@@ -25,6 +25,7 @@ public class UserController {
     @RequestMapping("/getResource")
     public String getResource() {
         Resouroce bean = new Resouroce();
+        // source  target
         BeanUtils.copyProperties(resouroce, bean);
         bean.setDate(new Date());
         return JsonUtil.getInstance().toJson(bean);
