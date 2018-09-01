@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.bean.Resouroce;
 import com.example.demo.bean.User;
 import com.example.demo.common.JsonUtil;
+import com.example.demo.vo.JsonResult;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,8 @@ public class UserController {
     private Resouroce resouroce;
 
     @RequestMapping("/getUser")
-    public User getUser() {
-        return new User("zxb", "123456", 20, new Date(), "hello zxb");
+    public String getUser() {
+        return JsonUtil.getInstance().toJson(JsonResult.build(new User("zxb", "123456", 20, new Date(), "hello zxb")));
     }
 
     @RequestMapping("/getResource")

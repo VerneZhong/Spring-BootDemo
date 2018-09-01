@@ -1,8 +1,16 @@
 package com.example.demo.common;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.example.demo.bean.User;
+import com.example.demo.vo.JsonResult;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.util.StringUtils;
+
+import java.util.Date;
 
 /**
  * Json 工具类
@@ -10,6 +18,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 public class JsonUtil {
 
     private static JsonUtil jsonUtil;
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     private JsonUtil() {
 
@@ -23,6 +32,23 @@ public class JsonUtil {
     }
 
     public String toJson(Object obj) {
-        return JSONObject.toJSONStringWithDateFormat(obj, "yyyy-MM-dd HH:mm:ss", SerializerFeature.WriteMapNullValue);
+        try {
+            return mapper.writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static <T> T objectFromJsonStr(String content, Class<T> valueType) throws Exception {
+        T obj = mapper.readValue(content, valueType);
+        return obj;
+    }
+
+    public static void main(String[] args) {
+        User user = new User("zxb", "123456", 20, new Date(), "hello zxb");
+        System.out.println(user);
+        JsonResult jr = JsonResult.build(user);
+        System.out.println(JsonUtil.getInstance().toJson(jr));
     }
 }
