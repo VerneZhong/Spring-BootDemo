@@ -13,7 +13,7 @@ public class TaskJob {
 
     // 定义每过3秒执行任务
 //    @Scheduled(fixedRate = 3000)
-    @Scheduled(cron = "4-40 * * * * ? ")
+    @Scheduled(cron = "5-10 * * * * ? ")
     public void reportCurrentTime() {
         System.out.println("现在时间：" + dateFormat.format(new Date()));
     }
