@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.common.JsonUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -458,4 +459,8 @@ public class SysUser {
         this.registTime = registTime;
     }
 
+    @Override
+    public String toString() {
+        return JsonUtil.getInstance().toJson(this);
+    }
 }

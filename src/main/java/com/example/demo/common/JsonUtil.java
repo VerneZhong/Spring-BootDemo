@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.util.StringUtils;
 
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -40,8 +41,13 @@ public class JsonUtil {
         return null;
     }
 
-    public static <T> T objectFromJsonStr(String content, Class<T> valueType) throws Exception {
-        T obj = mapper.readValue(content, valueType);
+    public <T> T objectFromJsonStr(String content, Class<T> valueType) {
+        T obj = null;
+        try {
+            obj = mapper.readValue(content, valueType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return obj;
     }
 
