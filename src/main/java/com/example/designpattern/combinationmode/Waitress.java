@@ -11,6 +11,10 @@ public class Waitress {
     }
 
     public void printMenu() {
+        allMenuCompent.print();
+    }
+
+    public void printVegetarianMenu() {
         Iterator iterator = allMenuCompent.createIterator();
         while (iterator.hasNext()) {
             MenuCompent menuCompent = (MenuCompent) iterator.next();
