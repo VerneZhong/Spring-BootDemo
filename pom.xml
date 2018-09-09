@@ -148,6 +148,14 @@
             <version>1.3.5</version>
         </dependency>
 
+        <!--lombok plugins-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!--junit测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
